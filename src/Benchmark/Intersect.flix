@@ -1,9 +1,9 @@
-mod Benchmark.Fixpoint.Intersect {
+mod MyBench.Fixpoint.Intersect {
     def numRules(): Int32 = Int32.pow(2, 16)
     def upperBound(): Int32 = Int32.pow(2, 16)
 
     // @benchmark
-    pub def intersect1(): Int32 \ IO = {
+    pub def intersect1(): Int32 \ IO =
         let upperBound = upperBound();
         let numRules = numRules();
         let p = #{
@@ -25,10 +25,9 @@ mod Benchmark.Fixpoint.Intersect {
         let factIn = inject genFacts(numRules, genIn, Some(1i64)) into In;
         query p, factsCheck, factIn select (x, y) from A(x, y)
         |> Vector.length
-    }
 
     // @benchmark
-    pub def intersect2(): Int32 \ IO = {
+    pub def intersect2(): Int32 \ IO =
         let upperBound = upperBound();
         let numRules = numRules();
         let p = #{
@@ -50,9 +49,8 @@ mod Benchmark.Fixpoint.Intersect {
         let factIn = inject genFacts(numRules, genIn, None) into In;
         query p, factsCheck, factIn select (x, y) from A(x, y)
         |> Vector.length
-    }
 
-    pub def intersect3(): Int32 \ IO = {
+    pub def intersect3(): Int32 \ IO =
         let upperBound = upperBound();
         let numRules = numRules();
         let p = #{
@@ -74,9 +72,8 @@ mod Benchmark.Fixpoint.Intersect {
         let factIn = inject genFacts(numRules, genIn, None) into In;
         query p, factsCheck, factIn select (x, y) from A(x, y)
         |> Vector.length
-    }
 
-    pub def intersect4(): Int32 \ IO = {
+    pub def intersect4(): Int32 \ IO =
         let upperBound = upperBound();
         let numRules = numRules();
         let p = #{
@@ -98,5 +95,4 @@ mod Benchmark.Fixpoint.Intersect {
         let factIn = inject genFacts(numRules, genIn, None) into In;
         query p, factsCheck, factIn select (x, y) from A(x, y)
         |> Vector.length
-    }
 }

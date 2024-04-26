@@ -1,7 +1,7 @@
-pub def genFacts[v: Type](n: Int32, g: Random -> v \ IO, seed: Option[Int64]): List[v] \ IO =
+pub def genFacts[v: Type](n: Int32, g: Random -> v \ IO, seed: Option[Int64]): Vector[v] \ IO =
     let r = Random.freshWithSeed(Option.getWithDefault(0i64, seed));
-    List.repeat(n, 0) |>
-    List.map(_ -> g(r))
+    Vector.repeat(n, 0) |>
+    Vector.map(_ -> g(r))
 
 pub def genFact1(max: Int32, r: Random): Int32 \ IO =
     Random.nextNatWithMax(r, max)

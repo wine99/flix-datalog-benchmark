@@ -1,12 +1,12 @@
-mod Benchmark.Fixpoint.Closure {
-    def genEdges(numNodes: Int32, numEdges: Int32): List[(Int32, Int32)] \ IO =
+mod MyBench.Fixpoint.Closure {
+    def genEdges(numNodes: Int32, numEdges: Int32): Vector[(Int32, Int32)] \ IO =
         genFacts(numEdges, genFact2(numNodes), None)
 
     def numEdges(): Int32 = 400
 
     def numNodes(): Int32 = 400
 
-    def genEdgesDefault(): List[(Int32, Int32)] \ IO =
+    def genEdgesDefault(): Vector[(Int32, Int32)] \ IO =
         genEdges(numNodes(), numEdges())
 
     /// TODO special graphs: chains, multipile SCCs

@@ -1,4 +1,4 @@
-mod Benchmark.Fixpoint.Propagate {
+mod MyBench.Fixpoint.Propagate {
 
     // @benchmark
     pub def propagate1(): Int32 =
@@ -56,6 +56,8 @@ mod Benchmark.Fixpoint.Propagate {
             Z(0).
             A(0).
             B(0).
+            C(0).
+            D(0).
             E(0).
             F(0).
             G(0).
