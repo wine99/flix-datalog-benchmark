@@ -2,12 +2,12 @@ mod MyBench.Fixpoint.Closure {
     def genEdges(numNodes: Int32, numEdges: Int32): Vector[(Int32, Int32)] \ IO =
         genFacts(numEdges, genFact2(numNodes), None)
 
-    def numEdges(): Int32 = 400
+    // def numEdges(): Int32 = 400
 
-    def numNodes(): Int32 = 400
+    // def numNodes(): Int32 = 400
 
-    def genEdgesDefault(): Vector[(Int32, Int32)] \ IO =
-        genEdges(numNodes(), numEdges())
+    // def genEdgesDefault(): Vector[(Int32, Int32)] \ IO =
+    //     genEdges(numNodes(), numEdges())
 
     /// TODO special graphs: chains, multipile SCCs
 
@@ -21,7 +21,7 @@ mod MyBench.Fixpoint.Closure {
             Path(x, y) :- Edge(x, y).
             Path(x, z) :- Path(x, y), Edge(y, z).
         };
-        let edges = inject genEdgesDefault() into Edge;
+        let edges = inject genEdges(400, 400) into Edge;
         query edges, p select (x, y) from Path(x, y)
         |> Vector.length
 
@@ -32,7 +32,7 @@ mod MyBench.Fixpoint.Closure {
             Path(x, y) :- Edge(x, y).
             Path(x, z) :- Path(x, y), Path(y, z).
         };
-        let edges = inject genEdgesDefault() into Edge;
+        let edges = inject genEdges(300, 300) into Edge;
         query edges, p select (x, y) from Path(x, y)
         |> Vector.length
 

@@ -20,8 +20,8 @@ mod MyBench.Fixpoint.Pointer {
 
     // @benchmark
     pub def pointsTo2(): Int32 \ IO =
-        let numInstructions = 500;
-        let numVariables = 1000;
+        let numInstructions = 400;
+        let numVariables = 800;
 
         let p = #{
             PointsTo(x, y) :- AddressOf(x, y).

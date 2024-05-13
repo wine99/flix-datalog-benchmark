@@ -2,6 +2,9 @@ mod MyBench.Fixpoint.Intersect {
     def numRules(): Int32 = Int32.pow(2, 16)
     def upperBound(): Int32 = Int32.pow(2, 16)
 
+    def numRulesSmall(): Int32 = Int32.pow(2, 12)
+    def upperBoundSmall(): Int32 = Int32.pow(2, 12)
+
     // @benchmark
     pub def intersect1(): Int32 \ IO =
         let upperBound = upperBound();
@@ -28,8 +31,8 @@ mod MyBench.Fixpoint.Intersect {
 
     // @benchmark
     pub def intersect2(): Int32 \ IO =
-        let upperBound = upperBound();
-        let numRules = numRules();
+        let upperBound = upperBoundSmall();
+        let numRules = numRulesSmall();
         let p = #{
             A(1 , i) :- Check(a, b, c, d, e), In(a, b, c, d, e, i).
             A(2 , i) :- Check(a, b, c, _, e), In(a, b, c, _, e, i).
@@ -50,9 +53,10 @@ mod MyBench.Fixpoint.Intersect {
         query p, factsCheck, factIn select (x, y) from A(x, y)
         |> Vector.length
 
+    // @benchmark
     pub def intersect3(): Int32 \ IO =
-        let upperBound = upperBound();
-        let numRules = numRules();
+        let upperBound = upperBoundSmall();
+        let numRules = numRulesSmall();
         let p = #{
             A(1 , i) :- Check(a, b, c, d, e), In(i, a, b, c, d, e).
             A(2 , i) :- Check(a, _, c, d, e), In(i, a, _, c, d, e).
@@ -73,9 +77,10 @@ mod MyBench.Fixpoint.Intersect {
         query p, factsCheck, factIn select (x, y) from A(x, y)
         |> Vector.length
 
+    // @benchmark
     pub def intersect4(): Int32 \ IO =
-        let upperBound = upperBound();
-        let numRules = numRules();
+        let upperBound = upperBoundSmall();
+        let numRules = numRulesSmall();
         let p = #{
             A(1 , i) :- Check(a, b, c, d, e), In(i, a, b, c, d, e).
             A(2 , i) :- Check(a, b, c, _, e), In(i, a, b, c, _, e).
